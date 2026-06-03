@@ -1,4 +1,4 @@
-import MWorkshop from "../../db/workshop.schema";
+import MWorkshop from "../../db/workshop.schema.js";
 
 export async function updateWorkshop(id, name, address, specialty, vehicles) {
     const updatedWorkshop = await MWorkshop.findByIdAndUpdate(

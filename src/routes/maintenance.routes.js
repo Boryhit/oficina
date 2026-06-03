@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllMaintenancesService } from '../service/maintenance.service.js';
+import { getAllMaintenancesService, getMaintenanceByIdService, createMaintenanceService, updateMaintenanceService, deleteMaintenanceService } from '../service/maintenance.service.js';
 
 const app = express();
 app.use(express.json());

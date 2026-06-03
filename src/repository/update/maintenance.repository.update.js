@@ -1,4 +1,4 @@
-import MMaintenance from "../../db/maintenance.schema";
+import MMaintenance from "../../db/maintenance.schema.js";
 
 export async function updateMaintenance(id, description, date, cost, vehicle) {
     const updatedMaintenance = await MMaintenance.findByIdAndUpdate(

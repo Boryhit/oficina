@@ -1,4 +1,4 @@
-import MVehicles from "../../db/workshop.schema";
+import MVehicles from "../../db/vehicle.schema.js";
 
 export async function getAllVehicles() {
     const vehicles = await MVehicles.find({});

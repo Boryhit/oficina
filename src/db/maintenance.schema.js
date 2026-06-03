@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-import MVehicle from "./vehicle.schema.js";
-import MWorkshop from "./workshop.schema.js";
 
 const maintenanceSchema = new mongoose.Schema({
     workshop: {

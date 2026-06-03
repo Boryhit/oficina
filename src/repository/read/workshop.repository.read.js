@@ -1,4 +1,4 @@
-import MWorkshop from "../../db/workshop.schema";
+import MWorkshop from "../../db/workshop.schema.js";
 
 export async function getAllWorkshops() {
     const workshops = await MWorkshop.find({});

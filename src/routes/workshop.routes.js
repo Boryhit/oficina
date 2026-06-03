@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllWorkshopsService } from '../service/workshop.service.js';
+import { getAllWorkshopsService, getWorkshopByIdService, createWorkshopService, updateWorkshopService, deleteWorkshopService } from '../service/workshop.service.js';
 
 const app = express();
 app.use(express.json());

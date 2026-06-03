@@ -1,4 +1,4 @@
-import MVehicle from "../../db/vehicle.schema";
+import MVehicle from "../../db/vehicle.schema.js";
 
 export async function createVehicle(vehicle) {
     const newVehicle = await new MVehicle(vehicle);

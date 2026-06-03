@@ -1,4 +1,4 @@
-import MWorkshop from "../../db/workshop.schema";
+import MWorkshop from "../../db/workshop.schema.js";
 
 export async function deleteWorkshop(id) {
     const deleteWorkshop = await MWorkshop.findByIdAndDelete(id);

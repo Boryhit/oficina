@@ -5,10 +5,10 @@ import { deleteWorkshop } from "../repository/delete/workshop.repository.delete.
 
 export async function createWorkshopService(workshop) {
     try {
-        if (!workshop.name || !workshop.address || !workshop.specialty) {
+        if (!workshop.name || !workshop.address || !workshop.specialties) {
             throw new Error("Dados Inválidos!");
         }
-        if (workshop.specialty.length === 0) {
+        if (workshop.specialties.length === 0) {
             throw new Error("Especialidade é obrigatória!");
         }
         if (workshop.vehicles.length === 0) {

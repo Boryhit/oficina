@@ -1,4 +1,4 @@
-import MMaintenance from "../../db/workshop.schema";
+import MMaintenance from "../../db/maintenance.schema.js";
 
 export async function getAllMaintenances() {
     const maintenances = await MMaintenance.find({});

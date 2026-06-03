@@ -32,6 +32,6 @@ app.use(vehicleRoutes);
 app.use(workshopRoutes);
 app.use(maintenanceRoutes);
 
-app.listen(app_port, () => {
-  console.log(`Server is running on port ${app_port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

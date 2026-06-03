@@ -1,4 +1,4 @@
-import { createMaintenance } from "../repository/write/maintenance.repository.write";
+import { createMaintenance } from "../repository/write/maintenance.repository.write.js";
 import { getAllMaintenances, getMaintenanceById } from "../repository/read/maintenance.repository.read.js";
 import { updateMaintenance } from "../repository/update/maintenance.repository.update.js";
 import { deleteMaintenance } from "../repository/delete/maintenance.repository.delete.js";

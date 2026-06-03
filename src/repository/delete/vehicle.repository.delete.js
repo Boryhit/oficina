@@ -1,4 +1,4 @@
-import MVehicle from "../../db/vehicle.schema";
+import MVehicle from "../../db/vehicle.schema.js";
 
 export async function deleteVehicle(id) {
     const deleteVehicle = await MVehicle.findByIdAndDelete(id);
