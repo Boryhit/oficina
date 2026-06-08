@@ -1,8 +1,8 @@
 import MVehicle from "../../db/vehicle.schema.js";
 
-export async function updateVehicle(id, make, model, year, licensePlate, owner) {
+export async function updateVehicle(id, make, model, year, owner, maintenances) {
     const updatedVehicle = await MVehicle.findByIdAndUpdate(
-        id, {make, model, year, licensePlate, owner},
+        id, {make, model, year, owner, maintenances},
         {new: true, runValidators: true}
     );
     if (!updatedVehicle) {

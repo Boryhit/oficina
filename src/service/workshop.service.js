@@ -5,10 +5,10 @@ import { deleteWorkshop } from "../repository/delete/workshop.repository.delete.
 
 export async function createWorkshopService(workshop) {
     try {
-        if (!workshop.name || !workshop.address || !workshop.specialties) {
+        if (!workshop.name || !workshop.address || !workshop.specialities) {
             throw new Error("Dados Inválidos!");
         }
-        if (workshop.specialties.length === 0) {
+        if (workshop.specialities.length === 0) {
             throw new Error("Especialidade é obrigatória!");
         }
         if (workshop.vehicles.length === 0) {
@@ -54,16 +54,16 @@ export async function getVehicleByWorkshopService(vehicleId) {
 
 export async function updateWorkshopService(id, workshop) {
     try {
-        if (!workshop.name || !workshop.address || !workshop.specialty) {
+        if (!workshop.name || !workshop.address || !workshop.specialities || !workshop.vehicles) {
             throw new Error("Dados Inválidos!");
         }
-        if (workshop.specialty.length === 0) {
+        if (workshop.specialities.length === 0) {
             throw new Error("Especialidade é obrigatória!");
         }
         if (workshop.vehicles.length === 0) {
             throw new Error("Veículo é obrigatório!");
         }
-        const updatedWorkshop = await updateWorkshop(id, workshop.name, workshop.address, workshop.specialty, workshop.vehicles);
+        const updatedWorkshop = await updateWorkshop(id, workshop.name, workshop.address, workshop.specialities, workshop.vehicles);
         return updatedWorkshop;
     } catch (error) {
         console.error("Erro ao atualizar oficina", error);

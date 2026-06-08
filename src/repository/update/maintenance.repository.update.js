@@ -1,8 +1,8 @@
 import MMaintenance from "../../db/maintenance.schema.js";
 
-export async function updateMaintenance(id, description, date, cost, vehicle) {
+export async function updateMaintenance(id, workshopId, vehicleId, services, date, totalCost) {
     const updatedMaintenance = await MMaintenance.findByIdAndUpdate(
-        id, {description, date, cost, vehicle},
+        id, {workshopId, vehicleId, services, date, totalCost},
         {new: true, runValidators: true}
     );
     if (!updatedMaintenance) {

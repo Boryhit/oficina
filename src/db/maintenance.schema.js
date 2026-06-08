@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
+import { Types } from "mongoose";
 
 const maintenanceSchema = new mongoose.Schema({
-    workshop: {
-        type: mongoose.Schema.Types.ObjectId,
+    workshopId: {
+        type: Types.ObjectId,
         required: true,
         ref: "Workshop"
     },
-    vehicle: {
-        type: mongoose.Schema.Types.ObjectId,
+    vehicleId: {
+        type: Types.ObjectId,
         required: true,
         ref: "Vehicle"
     },

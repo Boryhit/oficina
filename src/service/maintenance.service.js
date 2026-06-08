@@ -5,7 +5,7 @@ import { deleteMaintenance } from "../repository/delete/maintenance.repository.d
 
 export async function createMaintenanceService(maintenance) {
     try {
-        if (!maintenance.workshop || !maintenance.vehicle || !maintenance.services || !maintenance.date || !maintenance.totalcost) {
+        if (!maintenance.workshopId || !maintenance.vehicleId || !maintenance.services || !maintenance.date || !maintenance.totalCost) {
             throw new Error("Dados Inválidos!");
         }
         const newMaintenance = await createMaintenance(maintenance);
@@ -58,10 +58,10 @@ export async function getMaintenanceByVehicleService(maintenanceId) {
 
 export async function updateMaintenanceService(id, maintenance) {
     try {
-        if (!maintenance.workshop || !maintenance.vehicle || !maintenance.services || !maintenance.date || !maintenance.totalcost) {
+        if (!maintenance.workshopId || !maintenance.vehicleId || !maintenance.services || !maintenance.date || !maintenance.totalCost) {
             throw new Error("Dados Inválidos!");
         }
-        const updatedMaintenance = await updateMaintenance(id, maintenance.workshop, maintenance.vehicle, maintenance.services, maintenance.date, maintenance.totalcost);
+        const updatedMaintenance = await updateMaintenance(id, maintenance.workshopId, maintenance.vehicleId, maintenance.services, maintenance.date, maintenance.totalCost);
         return updatedMaintenance;
     } catch (error) {
         console.error("Erro ao atualizar manutenção", error);
