@@ -1,5 +1,5 @@
 import { createMaintenance } from "../repository/write/maintenance.repository.write.js";
-import { getAllMaintenances, getMaintenanceById } from "../repository/read/maintenance.repository.read.js";
+import { getAllMaintenances, getMaintenanceById, getMaintenanceByVehicle, getMaintenanceByWorkshop } from "../repository/read/maintenance.repository.read.js";
 import { updateMaintenance } from "../repository/update/maintenance.repository.update.js";
 import { deleteMaintenance } from "../repository/delete/maintenance.repository.delete.js";
 
@@ -38,8 +38,8 @@ export async function getMaintenanceByIdService(id) {
 
 export async function getMaintenanceByWorkshopService(workshopId) {
     try {
-        const workshops = await getMaintenanceByWorkshop(workshopId);
-        return workshops;
+        const workshopsId = await getMaintenanceByWorkshop(workshopId);
+        return workshopsId;
     } catch (error) {
         console.error("Erro ao buscar manutenções por oficina", error);
         throw error;
@@ -48,8 +48,8 @@ export async function getMaintenanceByWorkshopService(workshopId) {
 
 export async function getMaintenanceByVehicleService(maintenanceId) {
     try {
-        const maintenance = await getMaintenanceByVehicle(maintenanceId);
-        return maintenance;
+        const maintenanceId = await getMaintenanceByVehicle(maintenanceId);
+        return maintenanceId;
     } catch (error) {
         console.error("Erro ao buscar manutenções por veículo", error);
         throw error;

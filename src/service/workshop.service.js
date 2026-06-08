@@ -1,7 +1,8 @@
 import { createWorkshop } from "../repository/write/workshop.repository.write.js";
-import { getAllWorkshops, getWorkshopById } from "../repository/read/workshop.repository.read.js";
+import { getAllWorkshops, getWorkshopById, getVehicleByWorkshop } from "../repository/read/workshop.repository.read.js";
 import { updateWorkshop } from "../repository/update/workshop.repository.update.js";
 import { deleteWorkshop } from "../repository/delete/workshop.repository.delete.js";
+
 
 export async function createWorkshopService(workshop) {
     try {
@@ -42,10 +43,10 @@ export async function getWorkshopByIdService(id) {
     }
 }
 
-export async function getVehicleByWorkshopService(vehicleId) {
+export async function getVehicleByWorkshopService(vehiclesId) {
     try {
-        const workshops = await getVehicleByWorkshop(vehicleId);
-        return workshops;
+        const vehiclesId = await getVehicleByWorkshop(vehiclesId);
+        return vehiclesId;
     } catch (error) {
         console.error("Erro ao buscar oficinas por veículo", error);
         throw error;

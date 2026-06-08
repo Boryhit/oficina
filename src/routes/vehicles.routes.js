@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllVehiclesService, getVehicleByIdService, createVehicleService, updateVehicleService, deleteVehicleService } from '../service/vehicle.service.js';
+import { getAllVehiclesService, getVehicleByIdService, getMaintenanceByVehicleService, createVehicleService, updateVehicleService, deleteVehicleService } from '../service/vehicle.service.js';
 
 const app = express();
 app.use(express.json());
@@ -18,6 +18,16 @@ app.get("/vehicles/:id", async (req, res) => {
     const id = req.params.id;
     const vehicle = await getVehicleByIdService(id);
     return res.status(200).json(vehicle);
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+});
+
+app.get("/vehicles/maintenance/:maintenanceId", async (req, res) => {
+  try {
+    const maintenanceId = req.params.maintenanceId;
+    const maintenance = await getMaintenanceByVehicleService(maintenanceId);
+    return res.status(200).json(maintenance);
   } catch (error) {
     res.status(500).json({error: error.message});
   }

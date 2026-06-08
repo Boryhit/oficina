@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Types } from "mongoose";
 
 const workshopSchema = new mongoose.Schema({
     name: {
@@ -14,9 +15,10 @@ const workshopSchema = new mongoose.Schema({
         type: [String],
         required: true
     },
-    vehicles: {
-        type: [String],
-        required: true
+    vehiclesId: {
+        type: [Types.ObjectId],
+        required: true,
+        ref: "Vehicle"
     },
     createdAt: {
         type: Date,

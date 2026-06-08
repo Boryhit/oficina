@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Types } from "mongoose";
 
 const vehicleSchema = new mongoose.Schema({
     plate: {
@@ -18,9 +19,10 @@ const vehicleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    maintenances: {
-        type: [String],
-        required: true
+    maintenancesId: {
+        type: [Types.ObjectId],
+        required: false,
+        ref: "Maintenance"
     },
     createdAt: {
         type: Date,

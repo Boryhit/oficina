@@ -1,5 +1,5 @@
 import { createVehicle } from "../repository/write/vehicle.repository.write.js";
-import { getAllVehicles, getVehicleById } from "../repository/read/vehicle.repository.read.js";
+import { getAllVehicles, getVehicleById, getMaintenanceByVehicle } from "../repository/read/vehicle.repository.read.js";
 import { updateVehicle } from "../repository/update/vehicle.repository.update.js";
 import { deleteVehicle } from "../repository/delete/vehicle.repository.delete.js";
 
@@ -36,10 +36,10 @@ export async function getVehicleByIdService(id) {
     }
 }
 
-export async function getMaintenanceByVehicleService(maintenanceId) {
+export async function getMaintenanceByVehicleService(maintenancesId) {
     try {
-        const maintenance = await getMaintenanceByVehicle(maintenanceId);
-        return maintenance;
+        const maintenanceId = await getMaintenanceByVehicle(maintenancesId);
+        return maintenanceId;
     } catch (error) {
         console.error("Erro ao buscar manutenções por veículo", error);
         throw error;

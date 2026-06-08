@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllMaintenancesService, getMaintenanceByIdService, createMaintenanceService, updateMaintenanceService, deleteMaintenanceService } from '../service/maintenance.service.js';
+import { getAllMaintenancesService, getMaintenanceByIdService, getMaintenanceByVehicleService, getMaintenanceByWorkshopService, createMaintenanceService, updateMaintenanceService, deleteMaintenanceService } from '../service/maintenance.service.js';
 
 const app = express();
 app.use(express.json());
@@ -18,6 +18,26 @@ app.get("/maintenances/:id", async (req, res) => {
     const id = req.params.id;
     const maintenance = await getMaintenanceByIdService(id);
     return res.status(200).json(maintenance);
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+});
+
+app.get("/maintenances/workshop/:workshopId", async (req, res) => {
+  try {
+    const workshopId = req.params.workshopId;
+    const maintenances = await getMaintenanceByWorkshopService(workshopId);
+    return res.status(200).json(maintenances);
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+});
+
+app.get("/maintenances/vehicle/:maintenanceId", async (req, res) => {
+  try {
+    const maintenanceId = req.params.maintenanceId;
+    const maintenances = await getMaintenanceByVehicleService(maintenanceId);
+    return res.status(200).json(maintenances);
   } catch (error) {
     res.status(500).json({error: error.message});
   }

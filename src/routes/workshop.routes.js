@@ -1,5 +1,6 @@
 import express from 'express';
-import { getAllWorkshopsService, getWorkshopByIdService, createWorkshopService, updateWorkshopService, deleteWorkshopService } from '../service/workshop.service.js';
+import { getAllWorkshopsService, getWorkshopByIdService, getVehicleByWorkshopService, createWorkshopService, updateWorkshopService, deleteWorkshopService } from '../service/workshop.service.js';
+
 
 const app = express();
 app.use(express.json());
@@ -18,6 +19,16 @@ app.get("/workshops/:id", async (req, res) => {
     const id = req.params.id;
     const workshop = await getWorkshopByIdService(id);
     return res.status(200).json(workshop);
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+});
+
+app.get("/workshops/vehicle/:vehicleId", async (req, res) => {
+  try {
+    const vehicleId = req.params.vehicleId;
+    const workshops = await getVehicleByWorkshopService(vehicleId);
+    return res.status(200).json(workshops);
   } catch (error) {
     res.status(500).json({error: error.message});
   }
