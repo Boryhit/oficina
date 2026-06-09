@@ -1,5 +1,5 @@
 import { createVehicle } from "../repository/write/vehicle.repository.write.js";
-import { getAllVehicles, getVehicleById, getMaintenanceByVehicle } from "../repository/read/vehicle.repository.read.js";
+import { getAllVehicles, getVehicleById, getMaintenanceByVehicle, getVehicleByPlate } from "../repository/read/vehicle.repository.read.js";
 import { updateVehicle } from "../repository/update/vehicle.repository.update.js";
 import { deleteVehicle } from "../repository/delete/vehicle.repository.delete.js";
 
@@ -46,12 +46,22 @@ export async function getMaintenanceByVehicleService(maintenancesId) {
     }
 }
 
+export async function getVehicleByPlateService(plate) {
+    try {
+        const vehicle = await getVehicleByPlate(plate);
+        return vehicle;
+    } catch (error) {
+        console.error("Erro ao buscar veículo por placa", error);
+        throw error;
+    }
+}
+
 export async function updateVehicleService(id, vehicle) {
     try {
-        if (!vehicle.plate || !vehicle.model || !vehicle.year || !vehicle.owner || !vehicle.maintenances) {
+        if (!vehicle.plate || !vehicle.model || !vehicle.year || !vehicle.owner || !vehicle.maintenancesId) {
             throw new Error("Dados Inválidos!");
         }
-        const updatedVehicle = await updateVehicle(id, vehicle.plate, vehicle.model, vehicle.year, vehicle.owner, vehicle.maintenances);
+        const updatedVehicle = await updateVehicle(id, vehicle.plate, vehicle.model, vehicle.year, vehicle.owner, vehicle.maintenancesId);
         return updatedVehicle;
     } catch (error) {
         console.error("Erro ao atualizar veículo", error);

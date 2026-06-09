@@ -12,9 +12,6 @@ export async function createWorkshopService(workshop) {
         if (workshop.specialities.length === 0) {
             throw new Error("Especialidade é obrigatória!");
         }
-        if (workshop.vehicles.length === 0) {
-            throw new Error("Veículo é obrigatório!");
-        }
         const newWorkshop = await createWorkshop(workshop);
         return newWorkshop;
     } catch (error) {
@@ -55,16 +52,13 @@ export async function getVehicleByWorkshopService(vehiclesId) {
 
 export async function updateWorkshopService(id, workshop) {
     try {
-        if (!workshop.name || !workshop.address || !workshop.specialities || !workshop.vehicles) {
+        if (!workshop.name || !workshop.address || !workshop.specialities || !workshop.vehiclesId) {
             throw new Error("Dados Inválidos!");
         }
         if (workshop.specialities.length === 0) {
             throw new Error("Especialidade é obrigatória!");
         }
-        if (workshop.vehicles.length === 0) {
-            throw new Error("Veículo é obrigatório!");
-        }
-        const updatedWorkshop = await updateWorkshop(id, workshop.name, workshop.address, workshop.specialities, workshop.vehicles);
+        const updatedWorkshop = await updateWorkshop(id, workshop.name, workshop.address, workshop.specialities, workshop.vehiclesId);
         return updatedWorkshop;
     } catch (error) {
         console.error("Erro ao atualizar oficina", error);

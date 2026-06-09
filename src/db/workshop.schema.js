@@ -17,7 +17,7 @@ const workshopSchema = new mongoose.Schema({
     },
     vehiclesId: {
         type: [Types.ObjectId],
-        required: true,
+        required: false,
         ref: "Vehicle"
     },
     createdAt: {

@@ -1,8 +1,6 @@
 import MWorkshop from "../../db/workshop.schema.js";
-import { updateVehicle } from "../update/vehicle.repository.update.js";
 
 export async function createWorkshop(workshop) {
-    vehiclesId = updateVehicle(workshop.vehicles);
-    const newWorkshop = await new MWorkshop({...workshop, vehiclesId});
+    const newWorkshop = await new MWorkshop(workshop);
     return await newWorkshop.save();
 }

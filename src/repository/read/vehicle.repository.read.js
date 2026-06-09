@@ -17,3 +17,8 @@ export async function getMaintenanceByVehicle(maintenanceId) {
     const maintenance = await MMaintenance.find({vehicle: maintenanceId});
     return maintenance;
 }
+
+export async function getVehicleByPlate(plate) {
+    const vehicle = await MVehicles.findOne({plate: plate});
+    return vehicle;
+}
